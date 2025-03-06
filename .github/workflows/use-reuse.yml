@@ -1,4 +1,5 @@
 name: Workflow reuse
+on:
   push:
     branches:
       - main
