@@ -76,6 +76,15 @@ jobs:
     uses: ./.github/workflows/reusable.yml
     with:
       artifact-name: dist-files
+    # secrets:
+    #     some-sectrets: ${{ secrets.some-secrets }}
+  deploy-results:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy results
+        run: |
+          echo "${{ needs.deply.outputs.results }}"
   report:
     needs: [lint, deploy]
     if: failure()
